@@ -18,8 +18,6 @@ The containers will then be deployed. Once the deployment script deploys the con
 
 ```
 ...
-docker-compose logs
-Attaching to docker_ft_edavid_receiver-app_1, docker_ft_edavid_sender-app_1
 sender-app_1    | Showing the initial directory:
 sender-app_1    | bin      go.mod   main.go
 sender-app_1    | Creating a file file.txt
