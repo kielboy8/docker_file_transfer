@@ -1,12 +1,12 @@
 # Readme Instructions
 
+This Go app deploys 2 docker containers that can transfer files from one container to another. The transfer is one-way, so 1 container is the sender and the other is the receiver.
+
 ## Requirements:
 
 - You must have Docker installed on your machine.
 - Make sure you have no networks in Docker using subnet range 10.0.0.0/16 (the application uses this)
 	- If so you will have to modify the assigned IP addresses to the containers in `docker-compose.yml` and the `SENDER_IP` environment variable in both containers inside the mentioned YAML file.
-
-This Go app deploys 2 docker containers that can transfer files from one container to another. The transfer is one-way, so 1 container is the sender and the other is the receiver.
 
 ## Running the app
 
