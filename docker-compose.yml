@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  sender-app:
+    build: sender
+    command: >
+      sh -c "echo 'Showing the initial directory:' && ls && echo 'Creating a file file.txt' && touch file.txt && ls && ./bin/sender file.txt"
+    environment:
+      - SENDER_IP=10.0.0.2
+    networks:
+      app-network:
+        ipv4_address: 10.0.0.2
+    tty: true
+    stdin_open: true
+  receiver-app:
+    build: receiver
+    command: >
+      sh -c "echo 'Showing the initial directory:' && ls && ./bin/receiver && ls"
+    environment:
+      - SENDER_IP=10.0.0.2
+    networks:
+      app-network:
+        ipv4_address: 10.0.0.3
+    depends_on:
+        - "sender-app"
+    tty: true
+    stdin_open: true
+
+networks:
+  app-network: 
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/16
+          gateway: 10.0.0.1
+            
